@@ -1,4 +1,4 @@
-FROM alpine:3.6
+FROM alpine:3.7
 LABEL maintainer "Adrian B. Danieli - https://github.com/sickp"
 
 EXPOSE 6379
@@ -9,7 +9,7 @@ WORKDIR /data
 
 COPY rootfs /
 
-ENV REDIS_VERSION=4.0.0
+ENV REDIS_VERSION=4.0.10
 
 RUN set -exo pipefail \
   && apk add --no-cache --virtual .build-deps \
