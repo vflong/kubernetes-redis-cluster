@@ -86,19 +86,19 @@ pip install redis-trib
 
 ```
 redis-trib.py create \
-  `dig +short lifesense-qa-redis-app-0.redis-service.base.svc.cluster.local`:6379 \
-  `dig +short lifesense-qa-redis-app-1.redis-service.base.svc.cluster.local`:6379 \
-  `dig +short lifesense-qa-redis-app-2.redis-service.base.svc.cluster.local`:6379
+  `dig +short lifesense-qa-redis-app-0.lifesense-qa-redis-service.base.svc.cluster.local`:6379 \
+  `dig +short lifesense-qa-redis-app-1.lifesense-qa-redis-service.base.svc.cluster.local`:6379 \
+  `dig +short lifesense-qa-redis-app-2.lifesense-qa-redis-service.base.svc.cluster.local`:6379
 
 redis-trib.py replicate \
-  --master-addr `dig +short lifesense-qa-redis-app-0.redis-service.base.svc.cluster.local`:6379 \
-  --slave-addr `dig +short lifesense-qa-redis-app-3.redis-service.base.svc.cluster.local`:6379
+  --master-addr `dig +short lifesense-qa-redis-app-0.lifesense-qa-redis-service.base.svc.cluster.local`:6379 \
+  --slave-addr `dig +short lifesense-qa-redis-app-3.lifesense-qa-redis-service.base.svc.cluster.local`:6379
 redis-trib.py replicate \
-  --master-addr `dig +short lifesense-qa-redis-app-1.redis-service.base.svc.cluster.local`:6379 \
-  --slave-addr `dig +short lifesense-qa-redis-app-4.redis-service.base.svc.cluster.local`:6379
+  --master-addr `dig +short lifesense-qa-redis-app-1.lifesense-qa-redis-service.base.svc.cluster.local`:6379 \
+  --slave-addr `dig +short lifesense-qa-redis-app-4.lifesense-qa-redis-service.base.svc.cluster.local`:6379
 redis-trib.py replicate \
-  --master-addr `dig +short lifesense-qa-redis-app-2.redis-service.base.svc.cluster.local`:6379 \
-  --slave-addr `dig +short lifesense-qa-redis-app-5.redis-service.base.svc.cluster.local`:6379
+  --master-addr `dig +short lifesense-qa-redis-app-2.lifesense-qa-redis-service.base.svc.cluster.local`:6379 \
+  --slave-addr `dig +short lifesense-qa-redis-app-5.lifesense-qa-redis-service.base.svc.cluster.local`:6379
 ```
 
 ### Accessing redis cli
