@@ -2,6 +2,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: redis-data-redis-app-5
+  namespace: base
   labels:
     type: redis-nfs-claim
     app: redis

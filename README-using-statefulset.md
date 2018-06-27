@@ -15,7 +15,7 @@ systemctl start nfs-server.service
  
 ```bash
 # 新建子目录后需再次执行 chown/chmod
-mkdir -p /data/nfs/n{1..6}
+mkdir -p /data/nfs/qa/n{1..6}
 chown -R nfsnobody. /data/nfs
 chmod -R 755 /data/nfs
 cat /etc/exports
@@ -86,19 +86,19 @@ pip install redis-trib
 
 ```
 redis-trib.py create \
-  `dig +short redis-app-0.redis-service.default.svc.cluster.local`:6379 \
-  `dig +short redis-app-1.redis-service.default.svc.cluster.local`:6379 \
-  `dig +short redis-app-2.redis-service.default.svc.cluster.local`:6379
+  `dig +short redis-app-0.redis-service.base.svc.cluster.local`:6379 \
+  `dig +short redis-app-1.redis-service.base.svc.cluster.local`:6379 \
+  `dig +short redis-app-2.redis-service.base.svc.cluster.local`:6379
 
 redis-trib.py replicate \
-  --master-addr `dig +short redis-app-0.redis-service.default.svc.cluster.local`:6379 \
-  --slave-addr `dig +short redis-app-3.redis-service.default.svc.cluster.local`:6379
+  --master-addr `dig +short redis-app-0.redis-service.base.svc.cluster.local`:6379 \
+  --slave-addr `dig +short redis-app-3.redis-service.base.svc.cluster.local`:6379
 redis-trib.py replicate \
-  --master-addr `dig +short redis-app-1.redis-service.default.svc.cluster.local`:6379 \
-  --slave-addr `dig +short redis-app-4.redis-service.default.svc.cluster.local`:6379
+  --master-addr `dig +short redis-app-1.redis-service.base.svc.cluster.local`:6379 \
+  --slave-addr `dig +short redis-app-4.redis-service.base.svc.cluster.local`:6379
 redis-trib.py replicate \
-  --master-addr `dig +short redis-app-2.redis-service.default.svc.cluster.local`:6379 \
-  --slave-addr `dig +short redis-app-5.redis-service.default.svc.cluster.local`:6379
+  --master-addr `dig +short redis-app-2.redis-service.base.svc.cluster.local`:6379 \
+  --slave-addr `dig +short redis-app-5.redis-service.base.svc.cluster.local`:6379
 ```
 
 ### Accessing redis cli

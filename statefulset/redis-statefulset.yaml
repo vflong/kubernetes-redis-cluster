@@ -1,9 +1,10 @@
 apiVersion: apps/v1beta1
 kind: StatefulSet
 metadata:
-  name: redis-app
+  name: lifesense-qa-redis-app
+  namespace: base
 spec:
-  serviceName: "redis-service"
+  serviceName: "lifesense-qa-redis-service"
   replicas: 6
   template:
     metadata:
