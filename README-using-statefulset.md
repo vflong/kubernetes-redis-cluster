@@ -57,7 +57,7 @@ kubectl create configmap redis-conf --from-file=redis.conf
 ### Create Redis Services
 
 ```
-kubectl create -f statefulset-services/redis-headless.yaml
+kubectl create -f statefulset-services
 ```
 
 ### Create Redis Statefulset
