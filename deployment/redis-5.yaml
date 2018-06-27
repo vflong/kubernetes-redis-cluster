@@ -24,7 +24,7 @@ spec:
               topologyKey: kubernetes.io/hostname
       containers:
         - name: redis
-          image: "localrepo:5000/redis/redis-4.0.0:v1"
+          image: "vflong/redis"
           resources:
             requests:
               cpu: "100m"
