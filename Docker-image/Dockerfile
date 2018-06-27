@@ -24,7 +24,7 @@ RUN set -exo pipefail \
   && cd /tmp/redis-${REDIS_VERSION} \
   && make \
   && make install \
-  && mkdir -p /etc/redis \
+  && mkdir -p /etc/redis /var/lib/redis\
   && cp redis.conf /etc/redis/redis.conf \
   && sed -i -e 's/bind 127.0.0.1/bind 0.0.0.0/' /etc/redis/redis.conf \
   && adduser -D redis \
