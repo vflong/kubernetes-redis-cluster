@@ -9,6 +9,7 @@ metadata:
     app: redis
     podindex: "5"
 spec:
+  persistentVolumeReclaimPolicy: Delete
   capacity:
     storage: 1Gi
   accessModes:
