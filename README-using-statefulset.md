@@ -15,7 +15,7 @@ systemctl start nfs-server.service
  
 ```bash
 # 新建子目录后需再次执行 chown/chmod
-mkdir /data/nfs
+mkdir -p /data/nfs/n{1..6}
 chown -R nfsnobody. /data/nfs
 chmod -R 755 /data/nfs
 cat /etc/exports
