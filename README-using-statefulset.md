@@ -1,7 +1,40 @@
 # Kubernetes Redis Cluster
 
 ### Create NFS storages
-
+#### 安装软件
+ 
+```bash
+# server/client
+yum -y install nfs-utils
+# start
+systemctl enable nfs-server.service
+systemctl start nfs-server.service
+```
+ 
+#### 配置目录
+ 
+```bash
+# 新建子目录后需再次执行 chown/chmod
+mkdir /data/nfs
+chown -R nfsnobody. /data/nfs
+chmod -R 755 /data/nfs
+cat /etc/exports
+### content start ###
+# 下面的地址为 client 地址
+/data/nfs        192.168.1.101(rw,sync,no_subtree_check)
+### content end ###
+# make change
+exportfs -a
+```
+ 
+#### 挂载
+ 
+```bash
+mkdir -p /mnt/nfs
+mount 192.168.1.101:/data/nfs /mnt/nfs
+df -h
+mount
+```
 
 ### Create Persistent Volumes
 
