@@ -16,4 +16,4 @@ spec:
     - ReadWriteMany
   nfs:
     server: 10.9.34.61
-    path: "/data/nfs/qa/n5"
+    path: "/data/nfs/qa2/n5"

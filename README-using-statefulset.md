@@ -15,7 +15,7 @@ systemctl start nfs-server.service
  
 ```bash
 # 新建子目录后需再次执行 chown/chmod
-mkdir -p /data/nfs/qa/n{1..6}
+mkdir -p /data/nfs/qa2/n{1..6}
 chown -R nfsnobody. /data/nfs
 chmod -R 755 /data/nfs
 cat /etc/exports
@@ -86,19 +86,19 @@ pip install redis-trib
 
 ```
 redis-trib.py create \
-  `dig +short lifesense-qa-redis-app-0.lifesense-qa-redis-service.base.svc.cluster.local`:6379 \
-  `dig +short lifesense-qa-redis-app-1.lifesense-qa-redis-service.base.svc.cluster.local`:6379 \
-  `dig +short lifesense-qa-redis-app-2.lifesense-qa-redis-service.base.svc.cluster.local`:6379
+  `dig +short lifesense-qa2-redis-app-0.lifesense-qa2-redis-service.base.svc.cluster.local`:6379 \
+  `dig +short lifesense-qa2-redis-app-1.lifesense-qa2-redis-service.base.svc.cluster.local`:6379 \
+  `dig +short lifesense-qa2-redis-app-2.lifesense-qa2-redis-service.base.svc.cluster.local`:6379
 
 redis-trib.py replicate \
-  --master-addr `dig +short lifesense-qa-redis-app-0.lifesense-qa-redis-service.base.svc.cluster.local`:6379 \
-  --slave-addr `dig +short lifesense-qa-redis-app-3.lifesense-qa-redis-service.base.svc.cluster.local`:6379
+  --master-addr `dig +short lifesense-qa2-redis-app-0.lifesense-qa2-redis-service.base.svc.cluster.local`:6379 \
+  --slave-addr `dig +short lifesense-qa2-redis-app-3.lifesense-qa2-redis-service.base.svc.cluster.local`:6379
 redis-trib.py replicate \
-  --master-addr `dig +short lifesense-qa-redis-app-1.lifesense-qa-redis-service.base.svc.cluster.local`:6379 \
-  --slave-addr `dig +short lifesense-qa-redis-app-4.lifesense-qa-redis-service.base.svc.cluster.local`:6379
+  --master-addr `dig +short lifesense-qa2-redis-app-1.lifesense-qa2-redis-service.base.svc.cluster.local`:6379 \
+  --slave-addr `dig +short lifesense-qa2-redis-app-4.lifesense-qa2-redis-service.base.svc.cluster.local`:6379
 redis-trib.py replicate \
-  --master-addr `dig +short lifesense-qa-redis-app-2.lifesense-qa-redis-service.base.svc.cluster.local`:6379 \
-  --slave-addr `dig +short lifesense-qa-redis-app-5.lifesense-qa-redis-service.base.svc.cluster.local`:6379
+  --master-addr `dig +short lifesense-qa2-redis-app-2.lifesense-qa2-redis-service.base.svc.cluster.local`:6379 \
+  --slave-addr `dig +short lifesense-qa2-redis-app-5.lifesense-qa2-redis-service.base.svc.cluster.local`:6379
 ```
 
 ### Accessing redis cli
