@@ -69,14 +69,13 @@ kubectl create -f statefulset/redis-statefulset.yaml
 ### Connect Nodes
 
 ```
-kubectl run -i --tty ubuntu --image=ubuntu \
-  --restart=Never /bin/bash
+# kubectl run -i --tty ubuntu --image=ubuntu --restart=Never /bin/bash
+# apt-get update
+# apt-get install -y vim wget python2.7 python-pip redis-tools dnsutils
+
+kubectl run -i  --tty ubuntu --image=vflong/redis-trib --restart=Never /bin/bash
 ```
 
-```
-apt-get update
-apt-get install -y vim wget python2.7 python-pip redis-tools dnsutils
-```
 
 *Note:* `redis-trib` doesn't support hostnames (see [this issue](https://github.com/antirez/redis/issues/2565)), so we use `dig` to resolve our cluster IPs.
 
